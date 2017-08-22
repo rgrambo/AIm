@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <title>AIm</title>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script src="bundle.js"></script>
+    <script src="ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <canvas id="canvas" class="full_page_content"></canvas>
+    <div class="left w_third">
+<div id="editor">function getRotation(id, units, bullets) {
+    var myUnit = findMyUnit(id, units);
+    var closestUnit = findClosestUnit(myUnit, units);
+    if (closestUnit) {
+        if (distanceBetween(myUnit, closestUnit) > 20) {
+            return angleFromUnitToUnit(myUnit, closestUnit);
+        } else {
+            return angleFromUnitToUnit(myUnit, closestUnit) + 90;
+        }
+    }
+}
+
+function getGunRotation(id, units, bullets) {
+    var myUnit = findMyUnit(id, units);
+    var closestUnit = findClosestUnit(myUnit, units);
+    if (closestUnit) {
+        return angleFromUnitToUnit(myUnit, closestUnit) + GetRandomInt(-30, 30);
+    }
+}
+
+function findMyUnit(id, units) {
+    for (var i = 0; i < units.length; i++) {
+        if (units[i].id == id) {
+            return units[i];
+        }
+    }
+}
+
+function findClosestUnit(unit, units) {
+    var closestUnit = null;
+    var closestDistance = null;
+    for (var i = 0; i < units.length; i++) {
+        if (units[i].id !== unit.id) {
+            if (closestUnit === null) {
+                closestUnit = units[i];
+                closestDistance = distanceBetween(units[i], unit);
+            } else {
+                var distance = distanceBetween(units[i], unit);
+                if (distance < closestDistance) {
+                    closestUnit = units[i];
+                    closestDistance = distance;
+                }
+            }
+        }
+    }
+    return closestUnit;
+
+}
+
+function distanceBetween(unitA,unitB) {
+    return Math.sqrt((unitA.x - unitB.x)^2 + (unitA.y - unitB.y)^2);
+}
+
+function angleFromUnitToUnit(unitFrom, unitTo) {
+    return Math.atan2(unitTo.y-unitFrom.y, unitTo.x-unitFrom.x) * 180 / Math.PI;
+}
+
+function GetRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+</div>
+    </div>
+    <div class="right w_third" id="leaderboard">
+        <h2>Leaderboard</h2>
+        <p id="leaderboardText"></p>
+    </div>
+</body>
+</html>
