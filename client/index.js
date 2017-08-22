@@ -114,7 +114,7 @@ window.onload = function() {
     //
 
 
-    var URL = "https://10b9a707.ngrok.io";
+    var URL = "https://76585d55.ngrok.io";
     var unitRadius = 20;
     var bulletRadius = 10;
 
