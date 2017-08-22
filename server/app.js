@@ -233,5 +233,5 @@ function GetRandomInt(min, max) {
 setInterval(function(){ Update(); }, tickSpeed);
 
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+    console.log('AIm is listening on port 3000!');
 });
