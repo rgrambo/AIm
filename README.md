@@ -1,4 +1,4 @@
-![Image](https://imgur.com/a/F1LcXJF.gif)
+![Image](https://imgur.com/tkml1KI.gif)
 
 # AIm
 A game where the players compete by altering code in order to create the smartest AI. Or at least, the one that will win!
